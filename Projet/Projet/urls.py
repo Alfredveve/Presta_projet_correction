@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from products.views import index
+from products.views import index, addAticle, table, modifier
+
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -25,9 +26,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', index, name='index'),
-    #path()
+    path('add/', addAticle, name='add'),
+    path('table/', table, name='table'),
+    path('modifier/<int:pk>', modifier, name='modifier'),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
+

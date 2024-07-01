@@ -1,0 +1,36 @@
+{% extends 'product/base.html' %}
+
+
+
+
+  {% block section %}
+
+<table>
+    <thead>
+    <tr>
+        <th>N°</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Voir</th>
+        <th>Modifier</th>
+        <th>Supprimer</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for article in articles %}
+    <tr>
+        <th>{{ article.id }}</th>
+        <th>{{ article.name }}</th>
+        <th>{{ article.price }}</th>
+        <th>
+            <a href="">Voir</a>
+            <a href="{% url 'modifier' article.id %}">Modifier</a>
+            <a href="">Supprimer</a>
+            {% empty %}
+            <h3>No item in database</h3>
+            {% endfor %}
+        </th>
+    </tr>
+    </tbody>
+</table>
+{% endblock %}
